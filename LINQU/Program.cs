@@ -34,7 +34,7 @@ namespace LINQU
 
            
 
-
+            //using linq query
 
             var result3 = from co in coures
                           where co.Fees < 8000
@@ -45,13 +45,46 @@ namespace LINQU
                           where c.Name.StartsWith('C')
                           select c;
 
+            var result5 = from c in coures
+                          where c.Name.Contains('C')
+                          select c;
 
 
+            var result6 = from c in coures
+                          where c.Name.EndsWith('C')
+                          select c;
 
-            foreach (Course c in result1)  //change result to result3 result4
+           
+            //using LABDA expression
+            // =>  arrow operator  also called lambda expression
+            var result7 = coures.Where(x => x.Fees < 8000).OrderByDescending(y => y.Name).ToList();
+
+            var result8 = coures.Where(x => x.Id == 101).FirstOrDefault();
+
+            var result9 = coures.Where(j => j.Fees > 6000).ToList();
+
+            var result10 = coures.Where(a => a.Fees > 5000).OrderBy(b => b.Name).ToList();
+
+
+            
+
+            foreach (Course c in result10)  //change result to result3 result4
             {
                 Console.WriteLine($"{c.Id}  {c.Name} {c.Fees}");
             }
+
+
+
+
+           Console.WriteLine("//////////////////////////////////////////////////////////////");
+
+
+
+            foreach (Course x in result5)  //change result to result3 result4
+            {
+                Console.WriteLine($"{x.Id}  {x.Name} {x.Fees}");
+            }
+
 
 
         }
